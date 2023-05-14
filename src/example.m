@@ -1,4 +1,4 @@
-midi = readmidi('jesu.mid')
+midi = readmidi("jesu.mid", 0);
 
 %----- converting MIDI to audio ----------
 
@@ -6,19 +6,19 @@ midi = readmidi('jesu.mid')
 [y,Fs] = midi2audio(midi);    
 
 %% listen in matlab:
-soundsc(y, Fs);  % FM-synth
+% soundsc(y, Fs);  % FM-synth
 
 % a couple other very basic synth methods included:
 y = midi2audio(midi, Fs, 'sine');
-soundsc(y,Fs);
+% soundsc(y,Fs);
 
 y = midi2audio(midi, Fs, 'saw');
-soundsc(y,Fs);
+% soundsc(y,Fs);
 
 % save to file:
 % (normalize so as not clipped in writing to wav)
 y = .95.*y./max(abs(y));
-wavwrite(y, Fs, 'out.wav');
+% wavwrite(y, Fs, 'out.wav');
 
 %----- analyze MIDI info ----------
 
